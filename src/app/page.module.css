@@ -1,10 +1,11 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  font-weight: normal;
 }
 
 .description {
@@ -41,9 +42,98 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
+  grid-template-columns: repeat(4, 100px);
+  justify-content: center;
   max-width: 100%;
-  width: var(--max-width);
+  width: 1000px;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.grid div {
+  text-align: center;
+  font-size: 32px;
+}
+
+.grid div:hover {
+  cursor: pointer;
+  animation: updown 2s ease infinite;
+  color: #9090c8;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.letterBox {
+  border: 1px solid rgb(91, 91, 93);
+  border-radius: 20px;
+  min-width: 100px;
+  height: 50px;
+  font-style: italic;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+}
+
+.letterBox div {
+  padding: 0 5px;
+}
+
+.clearLetters {
+  font-style: italic;
+  font-size: 13px;
+}
+
+.clearLetters:hover {
+  cursor: pointer;
+  color: #9090c8;
+}
+
+.success {
+  font-style: italic;
+  background: linear-gradient(to bottom, rgba(231, 231, 231), transparent);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.success div {
+  animation: updown 2s ease infinite;
+}
+
+.clickone {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  font-weight: bold;
+   animation: updown 2s ease infinite;
+}
+
+.clicktwo {
+  position: absolute;
+  top: 500px;
+  right: 100px;
+  font-weight: bold;
+  animation: updown 2s ease infinite;
 }
 
 .card {
@@ -74,39 +164,38 @@
 
 .center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   padding: 4rem 0;
+  gap: 30px;
 }
 
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
+.clickhere {
+  cursor: pointer;
+  background:
+    linear-gradient(
+      to right,
+      rgba(145, 172, 157, 1),
+      rgba(145, 172, 157, 1)
+    ),
+    linear-gradient(
+      to right,
+      rgba(218,166,2, 1),
+      rgba(167,169,58, 1),
+      rgba(145, 172, 157, 1)
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
 }
 
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
+.clickhere:hover {
+  background-size: 0 3px, 100% 3px;
 }
 
-.center::before,
-.center::after {
-  content: '';
-  left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
-}
-
-.logo {
-  position: relative;
-}
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
